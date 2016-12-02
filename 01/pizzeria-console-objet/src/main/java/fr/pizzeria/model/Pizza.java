@@ -1,5 +1,7 @@
 package main.java.fr.pizzeria.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 public class Pizza {
 
 	private int id;
@@ -26,6 +28,20 @@ public class Pizza {
 		this.prix = prix;
 		this.catPizza = catPizza;
 		nbPizzas++;
+	}
+
+	public boolean equals(Pizza obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		if (obj.getClass() != getClass()) {
+			return false;
+		}
+		Pizza rhs = (Pizza) obj;
+		return new EqualsBuilder().append(code, rhs.code).append(nom, rhs.nom).append(prix, rhs.prix).isEquals();
 	}
 
 	public Pizza() {

@@ -1,14 +1,15 @@
 package main.java.fr.pizzeria.console;
 
+//main.java.fr.pizzeria.console.PizzeriaAdminConsoleApp
 import java.util.Scanner;
 
 import main.java.fr.pizzeria.dao.PizzaDaoTableau;
-import main.java.fr.pizzeria.dao.TraitementFichiers;
 import main.java.fr.pizzeria.exception.DeletePizzaException;
 import main.java.fr.pizzeria.exception.SavePizzaException;
 import main.java.fr.pizzeria.exception.UpdatesPizzaException;
 import main.java.fr.pizzeria.ihm.IhmUtil;
 import main.java.fr.pizzeria.ihm.MainMenu;
+import main.java.fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 
@@ -20,9 +21,12 @@ public class PizzeriaAdminConsoleApp {
 
 		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), new PizzaDaoTableau());
 		MainMenu Core = new MainMenu(ihmUtil);
+		Pizza p1 = new Pizza();
+		p1.setCode("MAR");
+		Pizza p2 = new Pizza();
+		p2.setCode("MAR");
 
-		TraitementFichiers t = new TraitementFichiers();
-		t.printlistFile();
+		System.out.println("p1=p2  ?" + p1.equals(p2));
 
 		while (Arret == false) {
 			Core.displayMenu();

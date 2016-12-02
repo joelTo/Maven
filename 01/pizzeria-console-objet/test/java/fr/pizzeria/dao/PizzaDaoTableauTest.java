@@ -27,6 +27,7 @@ public class PizzaDaoTableauTest {
 		/// Assert.assertEquals(14.52, piz.getPrix().doubleValue());
 		Assert.assertTrue("", piz.getPrix().equals(14.0));
 		Assert.assertEquals(piz.getPrix(), Double.valueOf(14.0));
+
 	}
 
 }
