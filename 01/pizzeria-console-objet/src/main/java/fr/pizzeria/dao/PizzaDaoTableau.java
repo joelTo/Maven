@@ -36,32 +36,39 @@ public class PizzaDaoTableau implements PizzaDaoFactory {
 		return code.isEmpty() && nom.isEmpty() && prix != 0;
 	}
 
-	public void supprime(int numPizzaSupprimee) throws DeletePizzaException {
-		if (numIsValide(numPizzaSupprimee)) {
+	public void delete(String code) throws DeletePizzaException {
+		if (codeIsValide(code)) {
 			throw new DeletePizzaException();
 		}
-		pizzas.remove(numPizzaSupprimee);
+		Pizza piz = pizzas.stream().filter(p -> p.getCode().equals(code)).findFirst().get();
+		pizzas.remove(piz);
 	}
 
-	private boolean numIsValide(int numPizzaSupprimee) {
-		return numPizzaSupprimee < pizzas.size();
+	private boolean codeIsValide(String code) {
+		return pizzas.stream().filter(p -> p.getCode().equals(code)).findFirst().isPresent();
 	}
 
-	public void update(String numPizza, String code, String nom, CategoriePizza catPizza, Double prix)
+	public void update(Pizza pizzaUdate, String oldCode)
 			throws UpdatesPizzaException {
-		if (isExisting(numPizza, code, nom, prix)) {
+
+		if (isExisting(pizzaUdate, oldCode)) {
 			throw new UpdatesPizzaException();
 		}
-		Pizza pizzaModifiee = new Pizza(Integer.parseInt(numPizza), code, nom, catPizza, prix);
-		pizzas.set(Integer.parseInt(numPizza), pizzaModifiee);
+
+		Pizza piz = pizzas.stream().filter(p -> p.getCode().equals(oldCode)).findFirst().get();
+		Pizza pizzaModifiee = new Pizza(piz.getId(), pizzaUdate.getCode(), pizzaUdate.getNom(),
+				pizzaUdate.getCatPizza(), pizzaUdate.getPrix());
+		pizzas.set(piz.getId(), pizzaModifiee);
 
 	}
 
-	private boolean isExisting(String numPizza, String code, String nom, Double prix) {
-		return numIsValide(Integer.parseInt(numPizza)) && code.isEmpty() && nom.isEmpty() && prix != 0;
+	private boolean isExisting(Pizza pizzaUdate, String oldCode) {
+		if (pizzas.stream().filter(p -> p.getCode().equals(oldCode)).findFirst().isPresent()) {
+			// mise en place du logger à faire LOG.("Probleme le code entrez
+			// n'existe pas ")
+			return false;
+		}
+		return (pizzaUdate.getCode().isEmpty() && pizzaUdate.getNom().isEmpty() && pizzaUdate.getPrix() != 0);
 	}
 
-	public ArrayList<Pizza> listPizza() {
-		return pizzas;
-	}
 }

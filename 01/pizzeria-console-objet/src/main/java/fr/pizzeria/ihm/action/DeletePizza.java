@@ -16,9 +16,9 @@ public class DeletePizza extends Action {
 	@Override
 	public void doAction() throws DeletePizzaException {
 		System.out.println("");
-		System.out.println("Veuillez entrer un num�ro de pizza � supprimer, s'il vous plait");
-		int numPizzaSupprimee = ihmUtil.getScanner().nextInt();
-		ihmUtil.getPizzaDao().supprime(numPizzaSupprimee);
+		System.out.println("Veuillez entrerle code <Alias de pizza a supprimer, s'il vous plait");
+		String pizzaToDelete = ihmUtil.getScanner().next();
+		ihmUtil.getPizzaDao().delete(pizzaToDelete);
 	}
 
 	@Override

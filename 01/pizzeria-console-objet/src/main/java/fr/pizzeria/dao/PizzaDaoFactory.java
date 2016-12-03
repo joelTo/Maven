@@ -14,9 +14,9 @@ public interface PizzaDaoFactory {
 
 	void save(String code, String nom, CategoriePizza catPizza, Double prix) throws SavePizzaException;
 
-	void supprime(int numPizzaSupprimee) throws DeletePizzaException;
+	void delete(String pizzaToDelete) throws DeletePizzaException;
 
-	void update(String numPizza, String code, String nom, CategoriePizza catPizza, Double prix)
+	void update(Pizza pizzaUdate, String oldCode)
 			throws UpdatesPizzaException;
 
 }

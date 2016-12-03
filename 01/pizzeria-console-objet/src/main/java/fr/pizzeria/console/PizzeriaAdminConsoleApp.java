@@ -20,13 +20,19 @@ public class PizzeriaAdminConsoleApp {
 		// printMenu();
 
 		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), new PizzaDaoTableau());
+
 		MainMenu Core = new MainMenu(ihmUtil);
+		/*****************************************************/
+		/**
+		 * Test pour voir si les dépendances des librairies sont respectees
+		 */
 		Pizza p1 = new Pizza();
 		p1.setCode("MAR");
 		Pizza p2 = new Pizza();
 		p2.setCode("MAR");
 
 		System.out.println("p1=p2  ?" + p1.equals(p2));
+		/*****************************************************/
 
 		while (Arret == false) {
 			Core.displayMenu();

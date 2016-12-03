@@ -22,11 +22,11 @@ public class PizzaDaoFichier implements PizzaDaoFactory {
 		// saveFile();
 	}
 
-	public void supprime(int numPizzaSupprimee) throws DeletePizzaException {
+	public void delete(String pizzaToDelete) throws DeletePizzaException {
 		return;
 	}
 
-	public void update(String numPizza, String code, String nom, CategoriePizza catPizza, Double prix)
+	public void update(Pizza pizzaUdate, String oldCode)
 			throws UpdatesPizzaException {
 		return;
 	}

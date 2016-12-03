@@ -16,8 +16,13 @@ public class ListPizza extends Action {
 
 	@Override
 	public void doAction() {
-		System.out.println("JE LISTE LES PIZZAS :D");
+		System.out.println("*****************");
+		System.out.println("LISTE DES PIZZAS ");
+		System.out.println("*****************");
+
 		Stream.of(this.ihmUtil.getPizzaDao().findAll()).forEach(System.out::println);
+		System.out.println(
+				"*******************************************************************************************************");
 	}
 
 	@Override
