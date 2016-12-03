@@ -14,3 +14,6 @@ Update 03/12/2016 v2
 - Mise en place une base de pizza plus grande
 - Implémentation fonctionnelle de la fonction bygrouping afin de regroupe par catégories de pizza la liste
 - 
+
+Update 03/12/2016 v3
+- Implementation de la partie Fichier (fonction save)

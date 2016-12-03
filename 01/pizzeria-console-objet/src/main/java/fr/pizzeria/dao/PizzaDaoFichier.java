@@ -1,7 +1,13 @@
 package main.java.fr.pizzeria.dao;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 import main.java.fr.pizzeria.exception.DeletePizzaException;
 import main.java.fr.pizzeria.exception.SavePizzaException;
@@ -9,25 +15,56 @@ import main.java.fr.pizzeria.exception.UpdatesPizzaException;
 import main.java.fr.pizzeria.model.Pizza;
 
 public class PizzaDaoFichier implements PizzaDaoFactory {
-	private File filePizzas;
+	private File file = new File("PizzaFiles");
 
+	@Override
 	public ArrayList<Pizza> findAll() {
-
+		List<String> codeList = listCodesPizza();
+		codeList.stream().forEach(codeFile -> readFile(codeFile));
 		return null;
 	}
 
+
+	@Override
 	public void save(Pizza newPizza) throws SavePizzaException {
-		// Pizza pizza = new Pizza(10, newPizza, nom, catPizza, prix);
-		// saveFile();
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
 	public void delete(String pizzaToDelete) throws DeletePizzaException {
-		return;
+		// TODO Auto-generated method stub
+
 	}
 
-	public void update(Pizza pizzaUdate, String oldCode)
-			throws UpdatesPizzaException {
-		return;
+	@Override
+	public void update(Pizza pizzaUdate, String oldCode) throws UpdatesPizzaException {
+		// TODO Auto-generated method stub
+
+	}
+	// ****************************************************//
+	// ****************************************************//
+	/**
+	 ** Liste la liste nom des fichiers <Pizza > au sein du dossier PizzaFiles **
+	 * 
+	 * @return Liste des fichiers
+	 */
+	private List<String> listCodesPizza() {
+		String[] paths = file.list();
+		List<String> stringList = new ArrayList<String>(Arrays.asList(paths));
+		return stringList;
 	}
 
+	private void readFile(String codeFile) {
+		String fileName = "PizzaFiles/" + codeFile;
+		try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
+
+			stream.forEach(System.out::println);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
+

@@ -15,9 +15,7 @@ public class TraitementFichiers {
 
 	public void printlistFile() {
 		List<String> code = listCodesPizza();
-		// for each name in the path array
 		for (String path : code) {
-			// prints filename and directory name
 			System.out.println(path);
 		}
 	}

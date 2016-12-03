@@ -3,6 +3,7 @@ package main.java.fr.pizzeria.console;
 //main.java.fr.pizzeria.console.PizzeriaAdminConsoleApp
 import java.util.Scanner;
 
+import main.java.fr.pizzeria.dao.PizzaDaoFichier;
 import main.java.fr.pizzeria.dao.PizzaDaoTableau;
 import main.java.fr.pizzeria.exception.DeletePizzaException;
 import main.java.fr.pizzeria.exception.SavePizzaException;
@@ -20,8 +21,10 @@ public class PizzeriaAdminConsoleApp {
 		// printMenu();
 
 		IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), new PizzaDaoTableau());
-
+		// IhmUtil ihmUtil = new IhmUtil(new Scanner(System.in), new
+		// PizzaDaoFichier());
 		MainMenu Core = new MainMenu(ihmUtil);
+
 		/*****************************************************/
 		/**
 		 * Test pour voir si les dépendances des librairies sont respectees
@@ -33,6 +36,8 @@ public class PizzeriaAdminConsoleApp {
 
 		System.out.println("p1=p2  ?" + p1.equals(p2));
 		/*****************************************************/
+		PizzaDaoFichier test = new PizzaDaoFichier();
+		System.out.println(test.findAll());
 
 		while (Arret == false) {
 			Core.displayMenu();
