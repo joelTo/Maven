@@ -6,3 +6,6 @@ Modification apporté:
 - Fonction exceptions // main.java.fr.pizzeria.dao --> PizzaDaoTableau --> Update
 - Modification des variables, et des fonctions..
 - Améliorations des implémentations en Java7 --> Java8
+
+Update 03/12/2016 v2
+- Penser a faire les actions lorsqu'une liste est vide
