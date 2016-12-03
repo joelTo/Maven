@@ -16,10 +16,12 @@ public class PizzaDaoTableauTest {
 		PizzaDaoTableau tableau = new PizzaDaoTableau();
 
 		// Execute code à tester --> Appel la méthode
-		tableau.save("PIT", "PYTHON", CategoriePizza.VIANDE, 14.00);
+		Pizza pizza = new Pizza(100, "PIT", "PYTHON", CategoriePizza.VIANDE, 14.0);
+		tableau.save(pizza);
 
 		// Verifie le résultat --> On teste
 		// recupere la pizza ajouté
+
 		Pizza piz = tableau.findAll().stream().filter(p -> p.getCode().equals("PIT")).findFirst().get();
 		Assert.assertEquals("PIT", piz.getCode());
 		Assert.assertEquals("PYTHON", piz.getNom());

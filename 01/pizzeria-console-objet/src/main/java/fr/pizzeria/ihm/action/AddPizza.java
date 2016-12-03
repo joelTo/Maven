@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 import main.java.fr.pizzeria.exception.SavePizzaException;
 import main.java.fr.pizzeria.ihm.IhmUtil;
 import main.java.fr.pizzeria.model.CategoriePizza;
+import main.java.fr.pizzeria.model.Pizza;
 
 public class AddPizza extends Action {
 
@@ -33,7 +34,7 @@ public class AddPizza extends Action {
 		System.out.println("Veuillez entrer le prix de la nouvelle pizza s'il vous plait");
 		Double prix = ihmUtil.getScanner().nextDouble();
 
-		ihmUtil.getPizzaDao().save(code, nom, CategoriePizza.valueOf(catPizza), prix);
+		ihmUtil.getPizzaDao().save(new Pizza(code, nom, CategoriePizza.valueOf(catPizza), prix));
 
 	}
 

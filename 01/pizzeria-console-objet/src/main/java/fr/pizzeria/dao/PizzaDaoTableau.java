@@ -12,9 +12,14 @@ public class PizzaDaoTableau implements PizzaDaoFactory {
 
 	private ArrayList<Pizza> pizzas = new ArrayList<Pizza>() {
 		{
-			add(new Pizza(0, "MAR", "Margherita", CategoriePizza.VIANDE, 14));
-			add(new Pizza(1, "ORI", "Oriental", CategoriePizza.VIANDE, 16));
-
+			add(new Pizza(0, "PEP", "Pépéroni", CategoriePizza.VIANDE, 12.50));
+			add(new Pizza(1, "MAR", "Margherita", CategoriePizza.VIANDE, 14.00));
+			add(new Pizza(2, "REI", "La Reine", CategoriePizza.VIANDE, 11.50));
+			add(new Pizza(3, "FRO", "La 4 fromages", CategoriePizza.SANS_VIANDE, 12.00));
+			add(new Pizza(4, "CAN", "La cannibale", CategoriePizza.VIANDE, 12.50));
+			add(new Pizza(5, "SAV", "La savoyarde", CategoriePizza.VIANDE, 13.00));
+			add(new Pizza(6, "IND", "L’indienne", CategoriePizza.POISSON, 14.00));
+			add(new Pizza(7, "ORI", "L’orientale", CategoriePizza.VIANDE, 13.50));
 		}
 	};
 
@@ -24,16 +29,16 @@ public class PizzaDaoTableau implements PizzaDaoFactory {
 	}
 
 	@Override
-	public void save(String code, String nom, CategoriePizza catPizza, Double prix) throws SavePizzaException {
-		if (isValid(code, nom, prix)) {
+	public void save(Pizza newPizza) throws SavePizzaException {
+		if (isValid(newPizza)) {
 			throw new SavePizzaException();
 		}
-		Pizza pizzaAjoutee = new Pizza(pizzas.size(), code, nom, catPizza, prix);
-		pizzas.add(pizzaAjoutee);
+		pizzas.add(new Pizza(pizzas.size(), newPizza.getCode(), newPizza.getNom(), newPizza.getCatPizza(),
+				newPizza.getPrix()));
 	}
 
-	private boolean isValid(String code, String nom, Double prix) {
-		return code.isEmpty() && nom.isEmpty() && prix != 0;
+	private boolean isValid(Pizza newPizza) {
+		return newPizza.getCode().isEmpty() && newPizza.getNom().isEmpty() && newPizza.getPrix() != 0;
 	}
 
 	public void delete(String code) throws DeletePizzaException {
@@ -45,7 +50,8 @@ public class PizzaDaoTableau implements PizzaDaoFactory {
 	}
 
 	private boolean codeIsValide(String code) {
-		return pizzas.stream().filter(p -> p.getCode().equals(code)).findFirst().isPresent();
+		System.out.println(pizzas.stream().filter(p -> p.getCode().equals(code)).findFirst().isPresent());
+		return !pizzas.stream().filter(p -> p.getCode().equals(code)).findFirst().isPresent();
 	}
 
 	public void update(Pizza pizzaUdate, String oldCode)

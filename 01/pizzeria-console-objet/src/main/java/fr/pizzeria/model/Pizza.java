@@ -53,7 +53,7 @@ public class Pizza {
 
 	public Pizza() {
 		super();
-		nbPizzas++;
+		// nbPizzas++;
 		// TODO Auto-generated constructor stub
 	}
 

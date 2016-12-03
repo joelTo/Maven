@@ -1,6 +1,12 @@
 package main.java.fr.pizzeria.ihm.action;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import main.java.fr.pizzeria.ihm.IhmUtil;
+import main.java.fr.pizzeria.model.CategoriePizza;
+import main.java.fr.pizzeria.model.Pizza;
 
 public class ListPizzaGroupeCategorie extends Action {
 
@@ -14,15 +20,10 @@ public class ListPizzaGroupeCategorie extends Action {
 
 	@Override
 	public void doAction() {
-		System.out.println("Affichage des pizzas par cat�gories");
-		// this.ihmUtil.getPizzaDao().findAll().stream().collect(Collectors.groupingBy(Pizza::getCatPizza))
-		// .forEach(System.out::println);
-
-		/**
-		 * Bonne Methode
-		 */
-		// this.ihmUtil.getPizzaDao().findAll().stream().collect(Collections.groupingBy(Pizza
-		// -> Pizza::getCatPizza));
+		System.out.println("Affichage des pizzas par categories");
+		Map<CategoriePizza, List<Pizza>> map = this.ihmUtil.getPizzaDao().findAll().stream()
+				.collect(Collectors.groupingBy(pizza -> pizza.getCatPizza()));
+		map.entrySet().stream().forEach(System.out::println);
 	}
 
 	@Override

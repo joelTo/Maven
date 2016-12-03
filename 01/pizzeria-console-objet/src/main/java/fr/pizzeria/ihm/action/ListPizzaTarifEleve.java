@@ -13,7 +13,7 @@ public class ListPizzaTarifEleve extends Action {
 	public ListPizzaTarifEleve(IhmUtil ihmUtil) {
 		super();
 		this.ihmUtil = ihmUtil;
-		this.setDescription("Liste la Pizza au Tarif le plus �leve");
+		this.setDescription("Liste la Pizza au Tarif le plus eleve");
 
 	}
 
