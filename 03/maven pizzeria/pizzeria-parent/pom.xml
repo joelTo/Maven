@@ -23,4 +23,21 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<profiles>
+		<profile>
+			<id>DoaTableau</id>
+			<properties>
+				<dao.impl>fr.dao.PizzaDaoFactory.PizzaDaoTableau </dao.impl>
+			</properties>
+		</profile>
+		<profile>
+			<id>DoaFichier</id>
+			<properties>
+				<dao.impl>fr.dao.PizzaDaoFactory.PizzaDaoFichier </dao.impl>
+			</properties>
+		</profile>
+	</profiles>
 </project>

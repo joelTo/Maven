@@ -27,7 +27,7 @@ public class AddPizza extends Action {
 		String nom = ihmUtil.getScanner().next();
 		System.out.println("Veuillez entrer le Cat�gorie de la nouvelle pizza s'il vous plait");
 		Stream.of(CategoriePizza.values())
-				.forEach(System.out::println); /* Lister les enum cr�� */
+				.forEach(System.out::println); /* Lister les enum cree */
 
 		String catPizza = ihmUtil.getScanner().next();
 

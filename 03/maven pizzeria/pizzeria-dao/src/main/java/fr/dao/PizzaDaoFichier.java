@@ -59,6 +59,7 @@ public class PizzaDaoFichier implements PizzaDaoFactory {
 		String fileName = "PizzaFiles/" + codeFile;
 		try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
 
+			// stream.map(t -> test.add(t));
 			stream.forEach(System.out::println);
 
 		} catch (IOException e) {
