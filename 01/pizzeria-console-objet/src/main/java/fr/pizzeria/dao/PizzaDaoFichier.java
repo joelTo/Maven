@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -20,7 +21,14 @@ public class PizzaDaoFichier implements PizzaDaoFactory {
 	@Override
 	public ArrayList<Pizza> findAll() {
 		List<String> codeList = listCodesPizza();
-		codeList.stream().forEach(codeFile -> readFile(codeFile));
+		Collection<String> t = new ArrayList<String>();
+		codeList.stream().forEach(codeFile -> t.add(readFile(codeFile)));
+		/* INSERTION de la liste dans un tableau mieux manipulable */
+		String[] y = t.toArray(new String[0]);
+		for (String string : y) {
+			String str[] = string.split(";");
+
+		}
 		return null;
 	}
 
@@ -55,15 +63,16 @@ public class PizzaDaoFichier implements PizzaDaoFactory {
 		return stringList;
 	}
 
-	private void readFile(String codeFile) {
+	private String readFile(String codeFile) {
 		String fileName = "PizzaFiles/" + codeFile;
 		try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-
-			stream.forEach(System.out::println);
-
+			ArrayList<String> t = new ArrayList<String>();
+			stream.forEach(a -> t.add(a));
+			return t.get(0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return null;
 		
 	}
 }

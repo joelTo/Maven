@@ -10,7 +10,6 @@ import main.java.fr.pizzeria.exception.SavePizzaException;
 import main.java.fr.pizzeria.exception.UpdatesPizzaException;
 import main.java.fr.pizzeria.ihm.IhmUtil;
 import main.java.fr.pizzeria.ihm.MainMenu;
-import main.java.fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 
@@ -29,15 +28,14 @@ public class PizzeriaAdminConsoleApp {
 		/**
 		 * Test pour voir si les dépendances des librairies sont respectees
 		 */
-		Pizza p1 = new Pizza();
-		p1.setCode("MAR");
-		Pizza p2 = new Pizza();
-		p2.setCode("MAR");
-
-		System.out.println("p1=p2  ?" + p1.equals(p2));
-		/*****************************************************/
+		/*
+		 * Pizza p1 = new Pizza(); p1.setCode("MAR"); Pizza p2 = new Pizza();
+		 * p2.setCode("MAR");
+		 * 
+		 * System.out.println("p1=p2  ?" + p1.equals(p2)); /
+		 *****************************************************/
 		PizzaDaoFichier test = new PizzaDaoFichier();
-		System.out.println(test.findAll());
+		test.findAll();
 
 		while (Arret == false) {
 			Core.displayMenu();
