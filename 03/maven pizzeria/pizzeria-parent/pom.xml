@@ -9,6 +9,8 @@
 		<module>../pizzeria-console</module>
 		<module>../pizzeria-dao</module>
 		<module>../pizzeria-model</module>
+
+		
 	</modules>
 	<build>
 		<pluginManagement>
